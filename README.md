@@ -7,10 +7,11 @@ UMConfigure.setLogEnabled(LogSwitch.isLogOpen(this))//Java
 UMConfigure.setLogEnabled(isLogOpen)//Kotlin
 
 dependencies {
-    implementation 'com.github.DonaldDu:ShakeDetector:0.9.0'
+    //app module
     debugImplementation "com.github.DonaldDu.LogSwitch:LIB:$logSwitchV"
     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.8'
-    
+
+    //add below to multiple module's base
     api "com.github.DonaldDu.LogSwitch:BASE:$logSwitchV"
 }
   
