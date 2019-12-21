@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">LogSwitch</string>
-    <string name="install_doraemon_kit">0</string>
+    <string name="auto_install_doraemon_kit">0</string>
 </resources>

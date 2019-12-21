@@ -6,7 +6,7 @@ import android.widget.ArrayAdapter
 import com.didichuxing.doraemonkit.DoraemonKit
 import kotlinx.android.synthetic.main.activity_log_switch.*
 
-class LogSwitchActivity : Activity() {
+internal class LogSwitchActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

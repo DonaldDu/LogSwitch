@@ -1,13 +1,13 @@
 package com.dhy.logswitch.demo
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.dhy.logswitch.LogSwitch
 import com.dhy.logswitch.isLogOpen
 import com.didichuxing.doraemonkit.DoraemonKit
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
