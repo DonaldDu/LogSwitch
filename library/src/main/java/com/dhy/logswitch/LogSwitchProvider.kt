@@ -7,17 +7,15 @@ import android.content.pm.ProviderInfo
 import android.os.Bundle
 import android.support.v4.content.FileProvider
 import com.didichuxing.doraemonkit.DoraemonKit
-import com.didichuxing.doraemonkit.kit.Category
 
 internal class LogSwitchProvider : FileProvider() {
     override fun attachInfo(context: Context, info: ProviderInfo) {
         super.attachInfo(context, info)
         val app = context as Application
 
-        val logSwitchKit = LogSwitchKit().apply { onAppInit(context) }
+        val logSwitchKit = LogSwitchKit()
         LogSwitch.logSwitchKit = logSwitchKit
-        DoraemonKit.install(app)
-        DoraemonKit.getKitList(Category.TOOLS).add(logSwitchKit)
+        DoraemonKit.install(app, listOf(logSwitchKit))
         DoraemonKit.hide()
 
         val installShakeDetector = context.getString(R.string.installShakeDetector) == "1"
