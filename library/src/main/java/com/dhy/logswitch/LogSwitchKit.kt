@@ -39,5 +39,5 @@ internal class LogSwitchKit : IKit {
 
     override fun getIcon(): Int = R.drawable.log_switch_kit
     override fun getName(): Int = R.string.log_switch_kit
-    override fun getCategory(): Int = Category.BIZ
+    override fun getCategory(): Int = Category.TOOLS
 }

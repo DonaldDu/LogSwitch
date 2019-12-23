@@ -1,7 +1,5 @@
 package com.dhy.logswitch;
 
-import com.dhy.logswitchbase.BuildConfig;
-
 import java.util.Map;
 
 public class LogSwitch {
@@ -15,7 +13,7 @@ public class LogSwitch {
     public static Object logSwitchKit;
 
     public static boolean isLogOpen(Object owner) {
-        if (BuildConfig.DEBUG && owner != null && switches != null) {
+        if (switches != null && owner != null) {
             String key = owner.getClass().getName();
             Boolean open = switches.get(key);
             if (open == null) {

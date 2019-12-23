@@ -27,5 +27,8 @@ dependencies {
 
     implementation project(path: ':base')
     debugImplementation project(path: ':library')
+
+//    debugImplementation "com.github.DonaldDu.LogSwitch:LIB:$logSwitchV"
+//    implementation "com.github.DonaldDu.LogSwitch:BASE:$logSwitchV"
     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.8'
 }

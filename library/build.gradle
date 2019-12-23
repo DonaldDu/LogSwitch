@@ -15,17 +15,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "X_LC_ID", "\"\""
-            buildConfigField "String", "X_LC_KEY", "\"\""
-        }
-        debug {
-            if (project.hasProperty('XLOG_MASTER_KEY')) {
-                buildConfigField "String", "X_LC_ID", "\"$XLOG_APP_ID\""
-                buildConfigField "String", "X_LC_KEY", "\"$XLOG_MASTER_KEY\""
-            } else {
-                buildConfigField "String", "X_LC_ID", "\"\""
-                buildConfigField "String", "X_LC_KEY", "\"\""
-            }
         }
     }
 }
@@ -36,7 +25,6 @@ dependencies {
     compileOnly "com.android.support:appcompat-v7:$android_support_version"
     testImplementation 'junit:junit:4.12'
 
-    implementation 'com.github.DonaldDu:ShakeDetector:0.9.0'
     api 'com.didichuxing.doraemonkit:doraemonkit:1.1.8'
     implementation project(path: ':base')
 }
@@ -54,7 +42,7 @@ publish {
     groupId = 'com.github.DonaldDu.LogSwitch'
     artifactId = 'LIB'
     //noinspection GroovyAccessibility
-    publishVersion = LogSwitchV
+    publishVersion = logSwitchV
     desc = 'desc'
     website = 'website'
 }
