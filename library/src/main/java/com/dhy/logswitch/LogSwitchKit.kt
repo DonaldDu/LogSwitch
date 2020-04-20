@@ -2,10 +2,11 @@ package com.dhy.logswitch
 
 import android.content.Context
 import android.content.Intent
+import com.didichuxing.doraemonkit.kit.AbstractKit
 import com.didichuxing.doraemonkit.kit.Category
-import com.didichuxing.doraemonkit.kit.IKit
 
-internal class LogSwitchKit : IKit {
+
+internal class LogSwitchKit : AbstractKit() {
     companion object {
         internal val switches: MutableMap<String, Boolean> = mutableMapOf()
 
@@ -24,20 +25,20 @@ internal class LogSwitchKit : IKit {
         }
     }
 
-    override fun onClick(context: Context) {
+    override fun onClick(context: Context?) {
         val i = Intent(context, LogSwitchActivity::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(i)
+        context!!.startActivity(i)
     }
 
-    override fun onAppInit(context: Context) {
-        val pref = context.getSharedPreferences(KEY_NAME, Context.MODE_PRIVATE)
+    override fun onAppInit(context: Context?) {
+        val pref = context!!.getSharedPreferences(KEY_NAME, Context.MODE_PRIVATE)
         pref.getStringSet(KEY_NAME, emptySet())?.forEach {
             switches[it] = true
         }
     }
 
-    override fun getIcon(): Int = R.drawable.log_switch_kit
-    override fun getName(): Int = R.string.log_switch_kit
-    override fun getCategory(): Int = Category.TOOLS
+    override val category: Int = Category.TOOLS
+    override val icon: Int = R.drawable.log_switch_kit
+    override val name: Int = R.string.log_switch_kit
 }

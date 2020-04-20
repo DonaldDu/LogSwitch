@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.ProviderInfo
 import android.os.Bundle
-import android.support.v4.content.FileProvider
+import androidx.core.content.FileProvider
 import com.didichuxing.doraemonkit.DoraemonKit
 
 internal class LogSwitchProvider : FileProvider() {

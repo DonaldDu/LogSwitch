@@ -1,7 +1,7 @@
 package com.dhy.logswitch.demo
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.dhy.logswitch.LogSwitch
 import com.dhy.logswitch.isLogOpen
 import com.didichuxing.doraemonkit.DoraemonKit
