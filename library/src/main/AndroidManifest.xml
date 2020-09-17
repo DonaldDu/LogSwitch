@@ -13,12 +13,7 @@
         <provider
             android:name=".LogSwitchProvider"
             android:authorities="${applicationId}.LogSwitchProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/log_switch_file_path" />
-        </provider>
+            android:exported="false" />
     </application>
 
 </manifest>

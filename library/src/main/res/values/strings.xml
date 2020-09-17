@@ -1,5 +1,5 @@
 <resources>
     <string name="log_switch_kit">日志开关</string>
     <string name="installShakeDetector">1</string>
-    <string name="UPDATE_INTERVAL_MS">1000</string>
+    <string name="UPDATE_INTERVAL_MS">300</string>
 </resources>

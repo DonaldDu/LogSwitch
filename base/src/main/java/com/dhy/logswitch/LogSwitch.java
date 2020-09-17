@@ -1,5 +1,7 @@
 package com.dhy.logswitch;
 
+import androidx.annotation.Nullable;
+
 import java.util.Map;
 
 public class LogSwitch {
@@ -12,7 +14,7 @@ public class LogSwitch {
      * */
     public static Object logSwitchKit;
 
-    public static boolean isLogOpen(Object owner) {
+    public static boolean isLogOpen(@Nullable Object owner) {
         if (switches != null && owner != null) {
             String key = owner.getClass().getName();
             Boolean open = switches.get(key);
