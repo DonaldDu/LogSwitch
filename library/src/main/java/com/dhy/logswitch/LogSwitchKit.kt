@@ -1,19 +1,17 @@
 package com.dhy.logswitch
 
+import android.app.Application
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import com.didichuxing.doraemonkit.kit.AbstractKit
-import com.didichuxing.doraemonkit.kit.Category
 
 
 internal class LogSwitchKit : AbstractKit() {
     companion object {
+        val kit = LogSwitchKit()
         internal val switches: MutableMap<String, Boolean> = mutableMapOf()
-
-        init {
-            LogSwitch.switches = switches
-        }
-
         private const val KEY_NAME = "LogSwitch"
         internal fun save(context: Context) {
             val datas = switches.filter { it.value }.map { it.key }.toSet()
@@ -23,6 +21,28 @@ internal class LogSwitchKit : AbstractKit() {
                 apply()
             }
         }
+    }
+
+    fun init(context: Context): LogSwitchKit {
+        val app = context.applicationContext as Application
+        installShakeDetector(app)
+        return this
+    }
+
+    private var installShake = false
+    private fun installShakeDetector(app: Application) {
+        if (installShake) return
+        installShake = true
+        val shakeDetector = ShakeDetector()
+        app.registerActivityLifecycleCallbacks(ActivityLifecycleOfShakeDetector(shakeDetector))
+
+        val screenOffReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                shakeDetector.unregister()
+            }
+        }
+
+        app.registerReceiver(screenOffReceiver, IntentFilter(Intent.ACTION_SCREEN_OFF))
     }
 
     override fun onClick(context: Context?) {
@@ -38,7 +58,6 @@ internal class LogSwitchKit : AbstractKit() {
         }
     }
 
-    override val category: Int = Category.TOOLS
     override val icon: Int = R.drawable.log_switch_kit
     override val name: Int = R.string.log_switch_kit
 }

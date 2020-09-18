@@ -9,10 +9,6 @@ public class LogSwitch {
      * null when release
      * */
     static Map<String, Boolean> switches;
-    /***
-     * null when release
-     * */
-    public static Object logSwitchKit;
 
     public static boolean isLogOpen(@Nullable Object owner) {
         if (switches != null && owner != null) {
