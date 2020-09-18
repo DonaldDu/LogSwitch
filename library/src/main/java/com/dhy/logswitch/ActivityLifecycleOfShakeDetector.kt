@@ -10,14 +10,21 @@ internal class ActivityLifecycleOfShakeDetector(private val shakeDetector: Shake
     private val onShake = { DoraemonKit.showToolPanel() }
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         shakeDetector.init(activity.application, onShake)
+        hideDoraemonKit()
     }
 
     override fun onActivityResumed(activity: Activity) {
         shakeDetector.register()
+        hideDoraemonKit()
     }
 
     override fun onActivityPaused(activity: Activity) {
         if (activity.isAppBackground()) shakeDetector.unregister()
+        hideDoraemonKit()
+    }
+
+    private fun hideDoraemonKit() {
+        if (DoraemonKit.isShow) DoraemonKit.hide()
     }
 
     private fun Context.isAppBackground(): Boolean {
