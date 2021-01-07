@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
@@ -23,9 +23,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compileOnly 'androidx.appcompat:appcompat:1.2.0'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
 
-    api "androidx.startup:startup-runtime:1.0.0-beta01"
+    api "androidx.startup:startup-runtime:1.0.0-rc01"
     compileOnly "com.didichuxing.doraemonkit:doraemonkit:$doraemonkitV"
     implementation project(path: ':base')
 }

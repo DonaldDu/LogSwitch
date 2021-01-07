@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.didi.dokit'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.dhy.logswitch.demo"
         minSdkVersion 16
@@ -24,12 +24,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.github.DonaldDu:StartupExt:1.0'
     implementation project(path: ':base')
     debugImplementation project(path: ':library')
-    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 //    implementation "com.github.DonaldDu.LogSwitch:BASE:$logSwitchV"
 //    debugImplementation "com.github.DonaldDu.LogSwitch:LIB:$logSwitchV"
 
