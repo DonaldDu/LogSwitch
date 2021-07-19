@@ -5,7 +5,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -22,18 +22,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     compileOnly 'androidx.appcompat:appcompat:1.2.0'
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
-
-apply plugin: 'com.novoda.bintray-release'
-publish {
-    userOrg = 'user'
-    groupId = 'com.github.DonaldDu.LogSwitch'
-    artifactId = 'BASE'
-    //noinspection GroovyAccessibility
-    publishVersion = logSwitchV
-    desc = 'desc'
-    website = 'website'
-}
+mavenPublish("com.github.DonaldDu.LogSwitch:BASE:$logSwitchV")
