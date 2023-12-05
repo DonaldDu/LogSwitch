@@ -4,7 +4,7 @@ buildscript {
     ext {
         ext.kotlin_version = "1.5.21"
     }
-    ext.logSwitchV = '1.0.4'
+    ext.logSwitchV = '1.0.5'
     ext.doraemonkitV = '3.4.0-alpha04'
     repositories {
         google()

@@ -9,12 +9,11 @@ import com.didichuxing.doraemonkit.DoraemonKit
 internal class ActivityLifecycleOfShakeDetector(private val shakeDetector: ShakeDetector) : ActivityLifecycleCallbacks2 {
     private val onShake = { DoraemonKit.showToolPanel() }
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        shakeDetector.init(activity.application, onShake)
         hideDoraemonKit()
     }
 
     override fun onActivityResumed(activity: Activity) {
-        shakeDetector.register()
+        shakeDetector.register(activity, onShake)
         hideDoraemonKit()
     }
 

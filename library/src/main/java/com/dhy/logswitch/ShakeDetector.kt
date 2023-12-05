@@ -10,31 +10,33 @@ import kotlin.math.abs
 
 
 internal class ShakeDetector {
-    private lateinit var sensorManager: SensorManager
+    private var sensorManager: SensorManager? = null
     private lateinit var onShakeCallback: () -> Unit
     private var UPDATE_INTERVAL_MS = 0
     private var startCount = 0
     private lateinit var sensor: Sensor
 
-    fun init(app: Application, onShake: () -> Unit) {
-        if (!::sensorManager.isInitialized) {
+    private fun init(context: Context, onShake: () -> Unit) {
+        if (sensorManager == null) {
+            val app = context.applicationContext as Application
             sensorManager = app.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+            sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
             UPDATE_INTERVAL_MS = app.getString(R.string.UPDATE_INTERVAL_MS).toInt()
         }
         onShakeCallback = onShake
     }
 
     private var registed = false
-    fun register() {
+    fun register(context: Context, onShake: () -> Unit) {
         if (!registed) {
-            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+            init(context, onShake)
+            sensorManager!!.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)
             registed = true
         }
     }
 
     fun unregister() {
-        sensorManager.unregisterListener(sensorEventListener)
+        sensorManager?.unregisterListener(sensorEventListener)
         registed = false
     }
 
